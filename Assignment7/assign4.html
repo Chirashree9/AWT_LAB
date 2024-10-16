@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paragraph Stacking</title>
+    <style>
+        .paragraph {
+            width: 200px;
+            padding: 10px;
+            margin: 10px;
+            background-color: lightblue;
+            border: 1px solid #007BFF;
+            position: relative;
+            cursor: pointer; /* Change cursor on hover */
+        }
+    </style>
+</head>
+<body>
+    <h2>Click a Paragraph</h2>
+    
+    <div class="paragraph" onclick="moveToTop(this)">Paragraph 1</div>
+    <div class="paragraph" onclick="moveToTop(this)">Paragraph 2</div>
+    <div class="paragraph" onclick="moveToTop(this)">Paragraph 3</div>
+    <div class="paragraph" onclick="moveToTop(this)">Paragraph 4</div>
+
+    <script>
+        function moveToTop(element) {
+            // Remove the element from its current position
+            element.parentNode.appendChild(element);
+        }
+    </script>
+</body>
+</html>
