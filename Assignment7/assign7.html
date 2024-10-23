@@ -3,44 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to NMAMIT, Nitte</title>
+    <title>Move Text Example</title>
     <style>
-        h1 {
-            transition: color 0.3s, font-size 0.3s;
+        #movingText {
+            position: absolute;
+            left: 50px;
+            top: 50px;
+            font-size: 24px;
         }
-
-        h1:hover {
-            color: #007BFF; /* Change color on hover */
-            font-size: 2.5em; /* Change font size on hover */
-        }
-
-        p {
-            margin: 20px 0;
-            padding: 10px;
-            border: 1px solid #ccc;
+        .button {
+            margin: 5px;
+            padding: 10px 15px;
+            font-size: 16px;
         }
     </style>
 </head>
 <body>
-    <h1>Welcome to NMAMIT, Nitte</h1>
-    
-    <p id="info">Hover over this paragraph to see coordinates.</p>
-    
-    <label for="x">X Coordinate:</label>
-    <input type="text" id="x" readonly>
-    <br>
-    <label for="y">Y Coordinate:</label>
-    <input type="text" id="y" readonly>
+    <div id="movingText">Welcome to NMAMAIT Nitte</div>
+    <div>
+        <button class="button" onclick="moveText('left')">Move Left</button>
+        <button class="button" onclick="moveText('down')">Move Down</button>
+        <button class="button" onclick="moveText('right')">Move Right</button>
+        <button class="button" onclick="moveText('up')">Move Up</button>
+    </div>
 
     <script>
-        const infoParagraph = document.getElementById('info');
-        const xInput = document.getElementById('x');
-        const yInput = document.getElementById('y');
+        const textElement = document.getElementById('movingText');
+        let leftPosition = 50; // initial left position
+        let topPosition = 50;  // initial top position
 
-        infoParagraph.addEventListener('mousemove', (event) => {
-            xInput.value = event.clientX; // Get X coordinate
-            yInput.value = event.clientY; // Get Y coordinate
-        });
+        function moveText(direction) {
+            const step = 10; // number of pixels to move
+            switch (direction) {
+                case 'left':
+                    leftPosition -= step;
+                    break;
+                case 'right':
+                    leftPosition += step;
+                    break;
+                case 'up':
+                    topPosition -= step;
+                    break;
+                case 'down':
+                    topPosition += step;
+                    break;
+            }
+            textElement.style.left = leftPosition + 'px';
+            textElement.style.top = topPosition + 'px';
+        }
     </script>
 </body>
 </html>
